@@ -9,8 +9,10 @@ namespace JeanMeeusUnitTests
     public class JulianDayTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestGregorianDateToJulianDay()
         {
+            /* These test values were obtained from page 62 of Astronomical Algorithms by Jean Meeus */
+
             TestGregorianDate(2451545.0, 2000, 1, 1.5);
             TestGregorianDate(2446822.5, 1987, 1, 27.0);
             TestGregorianDate(2446966.0, 1987, 6, 19.5);
