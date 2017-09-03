@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeanMeeus", "JeanMeeus.csproj", "{1E5DCE54-714B-4080-BDE9-2ADF827E52BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeanMeeus", "JeanMeeus\JeanMeeus.csproj", "{1E5DCE54-714B-4080-BDE9-2ADF827E52BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeanMeeusUnitTests", "..\JeanMeeusUnitTests\JeanMeeusUnitTests.csproj", "{2A9E24E1-D58B-4C59-952D-6326A5577430}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeanMeeusUnitTests", "JeanMeeusUnitTests\JeanMeeusUnitTests.csproj", "{2A9E24E1-D58B-4C59-952D-6326A5577430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
