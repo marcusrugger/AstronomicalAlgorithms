@@ -24,9 +24,31 @@ namespace JeanMeeus
             double A = Math.Truncate(Y / 100.0);
             double B = 2.0 - A + Math.Truncate(A / 4.0);
 
-            double JD = Math.Truncate(365.25 * (Y + 4716.0)) +
-                        Math.Truncate(30.6001 * (M + 1.0)) +
-                        D + B - 1524.5;
+            return CalculateJD(Y, M, D, B);
+        }
+        public static double JulianDateToJulianDay(int year, int month, double day)
+        {
+            double Y = year;
+            double M = month;
+            double D = day;
+
+            /* If the month is January or Febuary, consider it to be the 13th or 14th month of the preceding year */
+            if (month == 1 || month == 2)
+            {
+                Y = year - 1;
+                M = month + 12;
+            }
+
+            double B = 0.0;
+
+            return CalculateJD(Y, M, D, B);
+        }
+
+        private static double CalculateJD(double Y, double M, double D, double B)
+        {
+            return Math.Truncate(365.25 * (Y + 4716.0)) +
+                   Math.Truncate(30.6001 * (M + 1.0)) +
+                   D + B - 1524.5;
 
             /* Note from Jean:
              * 
@@ -36,8 +58,6 @@ namespace JeanMeeus
              * represent 30.6 exactly -- see in Chapter 2 what we said about BCD -- and might give a result of
              * 152.999 9998 instead, whose integer part is 152. The calculated JD would then be incorrect.
              */
-
-            return JD;
         }
     }
 }
