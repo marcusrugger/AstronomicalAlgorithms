@@ -40,7 +40,12 @@ namespace JeanMeeus
             get { return _JulianDay; }
         }
 
-        public virtual Date Date { get;}
+        public virtual Date Date { get; }
+
+        public static double operator -(Calendar d1, Calendar d2)
+        {
+            return d1.JulianDay - d2.JulianDay;
+        }
     }
 
     public class JulianCalendar : Calendar

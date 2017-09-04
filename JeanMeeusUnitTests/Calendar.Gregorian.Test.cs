@@ -31,7 +31,7 @@ namespace JeanMeeusUnitTests
             var d1 = GregorianCalendar.Create(1910, Date.April, 20.0);
             var d2 = GregorianCalendar.Create(1986, Date.Febuary, 9.0);
 
-            var diff = d2.JulianDay - d1.JulianDay;
+            var diff = d2 - d1;
 
             Assert.AreEqual(27689, diff);
         }
