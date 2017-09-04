@@ -11,10 +11,12 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestToDate()
         {
-            TestGregorianDate(new GregorianCalendar(2436116.31), 1957, 10, 4.81);
+            TestGregorianDate(new GregorianCalendar(2436116.31), 1957, Date.October, 4.81);
+            TestGregorianDate(new GregorianCalendar(2418781.5), 1910, Date.April, 20.0);
+            TestGregorianDate(new GregorianCalendar(2446470.5), 1986, Date.Febuary, 9.0);
         }
 
-        private void TestGregorianDate(GregorianCalendar calendar, int expectedYear, int expectedMonth, double expectedDay)
+        private void TestGregorianDate(Calendar calendar, int expectedYear, int expectedMonth, double expectedDay)
         {
             var date = calendar.Date;
 
