@@ -24,5 +24,16 @@ namespace JeanMeeusUnitTests
             Assert.AreEqual(expectedMonth, date.Month);
             Assert.AreEqual(expectedDay, date.Day, 0.001);
         }
+
+        [TestMethod]
+        public void TestHalleyInterval()
+        {
+            var d1 = GregorianCalendar.Create(1910, Date.April, 20.0);
+            var d2 = GregorianCalendar.Create(1986, Date.Febuary, 9.0);
+
+            var diff = d2.JulianDay - d1.JulianDay;
+
+            Assert.AreEqual(27689, diff);
+        }
     }
 }

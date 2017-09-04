@@ -8,13 +8,13 @@ namespace JeanMeeus
 {
     public class GregorianCalendar : Calendar
     {
-        public GregorianCalendar Create(int year, int month, double day)
+        public static GregorianCalendar Create(int year, int month, double day)
         {
             double jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
             return new GregorianCalendar(jd);
         }
 
-        public GregorianCalendar Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
+        public static GregorianCalendar Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
         {
             double d = millisecond;
             d = second + d / 1000.0;
@@ -25,7 +25,7 @@ namespace JeanMeeus
             return Create(year, month, d);
         }
 
-        public GregorianCalendar Create(JulianCalendar date)
+        public static GregorianCalendar Create(JulianCalendar date)
         {
             return new GregorianCalendar(date.JulianDay);
         }
