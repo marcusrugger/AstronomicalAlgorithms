@@ -124,30 +124,4 @@ namespace JeanMeeus
             }
         }
     }
-
-    public class JulianCalendar : Calendar
-    {
-        public static new JulianCalendar Create(int year, int month, double day)
-        {
-            double jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
-            return new JulianCalendar(jd);
-        }
-
-        public JulianCalendar Create(GregorianCalendar date)
-        {
-            return new JulianCalendar(date.JulianDay);
-        }
-
-        public JulianCalendar(double julianDay)
-        : base(julianDay)
-        { }
-
-        public override Date Date
-        {
-            get
-            {
-                return new Date();
-            }
-        }
-    }
 }

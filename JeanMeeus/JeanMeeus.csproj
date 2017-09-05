@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Calendar.cs" />
     <Compile Include="Calendar.Gregorian.cs" />
+    <Compile Include="Calendar.Julian.cs" />
     <Compile Include="JulianDay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\JeanMeeus.rd.xml" />
