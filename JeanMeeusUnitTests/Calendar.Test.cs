@@ -14,6 +14,21 @@ namespace JeanMeeusUnitTests
             TestDate(new Calendar(2436116.31), 1957, Months.October, 4.81);
             TestDate(new Calendar(2418781.5), 1910, Months.April, 20.0);
             TestDate(new Calendar(2446470.5), 1986, Months.Febuary, 9.0);
+
+            TestDate(new Calendar(2451545.0), 2000, 1, 1.5);
+            TestDate(new Calendar(2446822.5), 1987, 1, 27.0);
+            TestDate(new Calendar(2446966.0), 1987, 6, 19.5);
+            TestDate(new Calendar(2447187.5), 1988, 1, 27.0);
+            TestDate(new Calendar(2447332.0), 1988, 6, 19.5);
+            TestDate(new Calendar(2415020.5), 1900, 1, 1.0);
+            TestDate(new Calendar(2305447.5), 1600, 1, 1.0);
+            TestDate(new Calendar(2305812.5), 1600, 12, 31.0);
+
+            TestDate(new Calendar(2026871.8), 837, 4, 10.3);
+            TestDate(new Calendar(1356001.0), -1000, 7, 12.5);
+            TestDate(new Calendar(1355866.5), -1000, 2, 29.0);
+            TestDate(new Calendar(1355671.4), -1001, 8, 17.9);
+            TestDate(new Calendar(0.0), -4712, 1, 1.5);
         }
 
         private void TestDate(Calendar calendar, int expectedYear, int expectedMonth, double expectedDay)
