@@ -8,7 +8,7 @@ namespace JeanMeeus
 {
     public class GregorianCalendar : Calendar
     {
-        public static GregorianCalendar Create(int year, int month, double day)
+        public static new GregorianCalendar Create(int year, int month, double day)
         {
             double jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
             return new GregorianCalendar(jd);

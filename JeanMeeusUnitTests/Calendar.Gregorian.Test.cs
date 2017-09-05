@@ -9,7 +9,7 @@ namespace JeanMeeusUnitTests
     public class GregorianCalendarTests
     {
         [TestMethod]
-        public void TestToDate()
+        public void TestGregorianToDate()
         {
             TestGregorianDate(new GregorianCalendar(2436116.31), 1957, Date.October, 4.81);
             TestGregorianDate(new GregorianCalendar(2418781.5), 1910, Date.April, 20.0);
