@@ -50,14 +50,14 @@ namespace JeanMeeus
                 jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
             else if (year < 1582)
                 jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
-            else if (month < Months.October)
-                jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
             else if (month > Months.October)
                 jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
-            else if (day < 5.0)
+            else if (month < Months.October)
                 jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
             else if (day >= 15.0)
                 jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
+            else if (day < 5.0)
+                jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
             else
                 throw new ArgumentOutOfRangeException("Invalid date: Date cannot be between Oct 4, 1582 and Oct 15, 1582");
 
@@ -69,11 +69,26 @@ namespace JeanMeeus
             return Create(date.Year, date.Month, date.Day);
         }
 
-        private double _JulianDay;
+        private readonly double _JulianDay;
 
         public Calendar(double julianDay)
         {
             _JulianDay = julianDay;
+        }
+
+        protected Calendar(Calendar date)
+        {
+            _JulianDay = date.JulianDay;
+        }
+
+        public virtual Calendar Clone()
+        {
+            return new Calendar(this);
+        }
+
+        protected virtual Calendar Instantiate(double jd)
+        {
+            return new Calendar(jd);
         }
 
         public double JulianDay
@@ -119,6 +134,11 @@ namespace JeanMeeus
         public static double operator -(Calendar d1, Calendar d2)
         {
             return d1.JulianDay - d2.JulianDay;
+        }
+
+        public static Calendar operator +(Calendar date, double d)
+        {
+            return date.Instantiate(date.JulianDay + d);
         }
 
         public int DayOfWeek

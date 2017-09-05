@@ -39,6 +39,20 @@ namespace JeanMeeus
         : base(julianDay)
         { }
 
+        public GregorianCalendar(GregorianCalendar date)
+        : base(date)
+        { }
+
+        public override Calendar Clone()
+        {
+            return new GregorianCalendar(this);
+        }
+
+        protected override Calendar Instantiate(double jd)
+        {
+            return new GregorianCalendar(jd);
+        }
+
         public override Date Date
         {
             get
