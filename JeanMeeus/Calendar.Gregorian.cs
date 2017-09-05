@@ -14,6 +14,11 @@ namespace JeanMeeus
             return new GregorianCalendar(jd);
         }
 
+        public static new GregorianCalendar Create(Date date)
+        {
+            return Create(date.Year, date.Month, date.Day);
+        }
+
         public static GregorianCalendar Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
         {
             double d = millisecond;

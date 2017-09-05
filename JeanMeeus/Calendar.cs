@@ -64,6 +64,11 @@ namespace JeanMeeus
             return new Calendar(jd);
         }
 
+        public static Calendar Create(Date date)
+        {
+            return Create(date.Year, date.Month, date.Day);
+        }
+
         private double _JulianDay;
 
         public Calendar(double julianDay)

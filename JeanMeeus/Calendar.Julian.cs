@@ -14,6 +14,11 @@ namespace JeanMeeus
             return new JulianCalendar(jd);
         }
 
+        public static new JulianCalendar Create(Date date)
+        {
+            return Create(date.Year, date.Month, date.Day);
+        }
+
         public static JulianCalendar Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
         {
             double d = millisecond;
