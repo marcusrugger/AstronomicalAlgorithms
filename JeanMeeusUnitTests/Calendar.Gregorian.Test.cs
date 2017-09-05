@@ -11,9 +11,9 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestGregorianToDate()
         {
-            TestGregorianDate(new GregorianCalendar(2436116.31), 1957, Date.October, 4.81);
-            TestGregorianDate(new GregorianCalendar(2418781.5), 1910, Date.April, 20.0);
-            TestGregorianDate(new GregorianCalendar(2446470.5), 1986, Date.Febuary, 9.0);
+            TestGregorianDate(new GregorianCalendar(2436116.31), 1957, Months.October, 4.81);
+            TestGregorianDate(new GregorianCalendar(2418781.5), 1910, Months.April, 20.0);
+            TestGregorianDate(new GregorianCalendar(2446470.5), 1986, Months.Febuary, 9.0);
         }
 
         private void TestGregorianDate(Calendar calendar, int expectedYear, int expectedMonth, double expectedDay)
@@ -28,8 +28,8 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestHalleyInterval()
         {
-            var d1 = GregorianCalendar.Create(1910, Date.April, 20.0);
-            var d2 = GregorianCalendar.Create(1986, Date.Febuary, 9.0);
+            var d1 = GregorianCalendar.Create(1910, Months.April, 20.0);
+            var d2 = GregorianCalendar.Create(1986, Months.Febuary, 9.0);
 
             var diff = d2 - d1;
 

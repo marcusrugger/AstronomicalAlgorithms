@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace JeanMeeus
 {
-    public struct Date
+    public class Weekdays
+    {
+        public const int Sunday = 0;
+        public const int Monday = 1;
+        public const int Tuesday = 2;
+        public const int Wednesday = 3;
+        public const int Thursday = 4;
+        public const int Friday = 5;
+        public const int Saturday = 6;
+    }
+
+    public class Months
     {
         public const int January = 1;
         public const int Febuary = 2;
@@ -20,7 +31,10 @@ namespace JeanMeeus
         public const int October = 10;
         public const int November = 11;
         public const int December = 12;
+    }
 
+    public struct Date
+    {
         public int Year;
         public int Month;
         public double Day;
@@ -36,9 +50,9 @@ namespace JeanMeeus
                 jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
             else if (year < 1582)
                 jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
-            else if (month < Date.October)
+            else if (month < Months.October)
                 jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
-            else if (month > Date.October)
+            else if (month > Months.October)
                 jd = JeanMeeus.JulianDay.GregorianDateToJulianDay(year, month, day);
             else if (day < 5.0)
                 jd = JeanMeeus.JulianDay.JulianDateToJulianDay(year, month, day);
@@ -100,6 +114,14 @@ namespace JeanMeeus
         public static double operator -(Calendar d1, Calendar d2)
         {
             return d1.JulianDay - d2.JulianDay;
+        }
+
+        public int DayOfWeek
+        {
+            get
+            {
+                return (int)((JulianDay + 1.5) % 7.0);
+            }
         }
     }
 
