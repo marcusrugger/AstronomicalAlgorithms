@@ -6,18 +6,42 @@ using System.Threading.Tasks;
 
 namespace JeanMeeus
 {
-    public class Weekdays
+    public enum Weekdays : byte
     {
-        public const int Sunday = 0;
-        public const int Monday = 1;
-        public const int Tuesday = 2;
-        public const int Wednesday = 3;
-        public const int Thursday = 4;
-        public const int Friday = 5;
-        public const int Saturday = 6;
+        Sunday = 0x01,
+        Monday = 0x02,
+        Tuesday = 0x04,
+        Wednesday = 0x08,
+        Thursday = 0x10,
+        Friday = 0x20,
+        Saturday = 0x40,
+        Weekend = Saturday | Sunday,
+        Weekday = Monday | Tuesday | Wednesday | Thursday | Friday
     }
 
-    public class Months
+    public static class WeekdaysMethods
+    {
+        public static Weekdays[] DaysOfWeek = new Weekdays[7]
+        {
+                Weekdays.Sunday,
+                Weekdays.Monday,
+                Weekdays.Tuesday,
+                Weekdays.Wednesday,
+                Weekdays.Thursday,
+                Weekdays.Friday,
+                Weekdays.Saturday
+        };
+
+        public static Weekdays From(int dayOfWeek)
+        {
+            if (dayOfWeek < 0 || dayOfWeek >= 7)
+                throw new ArgumentOutOfRangeException($"dayOfWeek must be 0-6, actual value was {dayOfWeek}");
+
+            return DaysOfWeek[dayOfWeek];
+        }
+    }
+
+    public static class Months
     {
         public const int January = 1;
         public const int Febuary = 2;
@@ -80,11 +104,11 @@ namespace JeanMeeus
             return date.Instantiate(date.JulianDay - d);
         }
 
-        public int DayOfWeek
+        public Weekdays DayOfWeek
         {
             get
             {
-                return (int)((JulianDay + 1.5) % 7.0);
+                return WeekdaysMethods.From((int)((JulianDay + 1.5) % 7.0));
             }
         }
     }
