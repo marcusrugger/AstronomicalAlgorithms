@@ -72,7 +72,9 @@ namespace JeanMeeus
 
         public static Weekdays Add(Weekdays day, int value)
         {
-            return FromIndex((ToIndex(day) + value) % 7);
+            int a = (ToIndex(day) + value) % 7;
+            if (a < 0) a = 7 + a;
+            return FromIndex(a);
         }
     }
 
