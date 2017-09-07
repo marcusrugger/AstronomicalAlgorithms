@@ -23,21 +23,56 @@ namespace JeanMeeus
     {
         public static Weekdays[] DaysOfWeek = new Weekdays[7]
         {
-                Weekdays.Sunday,
-                Weekdays.Monday,
-                Weekdays.Tuesday,
-                Weekdays.Wednesday,
-                Weekdays.Thursday,
-                Weekdays.Friday,
-                Weekdays.Saturday
+            Weekdays.Sunday,
+            Weekdays.Monday,
+            Weekdays.Tuesday,
+            Weekdays.Wednesday,
+            Weekdays.Thursday,
+            Weekdays.Friday,
+            Weekdays.Saturday
         };
 
-        public static Weekdays From(int dayOfWeek)
+        public static Weekdays FromIndex(int dayOfWeek)
         {
             if (dayOfWeek < 0 || dayOfWeek >= 7)
                 throw new ArgumentOutOfRangeException($"dayOfWeek must be 0-6, actual value was {dayOfWeek}");
 
             return DaysOfWeek[dayOfWeek];
+        }
+
+        public static int ToIndex(Weekdays day)
+        {
+            switch (day)
+            {
+                case Weekdays.Sunday:
+                    return 0;
+
+                case Weekdays.Monday:
+                    return 1;
+
+                case Weekdays.Tuesday:
+                    return 2;
+
+                case Weekdays.Wednesday:
+                    return 3;
+
+                case Weekdays.Thursday:
+                    return 4;
+
+                case Weekdays.Friday:
+                    return 5;
+
+                case Weekdays.Saturday:
+                    return 6;
+
+                default:
+                    throw new ArgumentOutOfRangeException($"day not set to valid day of week: actual value is {day}");
+            }
+        }
+
+        public static Weekdays Add(Weekdays day, int value)
+        {
+            return FromIndex((ToIndex(day) + value) % 7);
         }
     }
 
@@ -108,7 +143,7 @@ namespace JeanMeeus
         {
             get
             {
-                return WeekdaysMethods.From((int)((JulianDay + 1.5) % 7.0));
+                return WeekdaysMethods.FromIndex((int)((JulianDay + 1.5) % 7.0));
             }
         }
     }
