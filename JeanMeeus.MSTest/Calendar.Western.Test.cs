@@ -1,9 +1,7 @@
-﻿
-using System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using JeanMeeus;
 
-namespace JeanMeeusUnitTests
+namespace JeanMeeus.MSTest
 {
     [TestClass]
     public class CalendarTests

@@ -1,12 +1,12 @@
 ﻿
 namespace JeanMeeus
 {
-    class InterpolationThree
+    public class InterpolateThree
     {
         private readonly double x2, y2;
         private readonly double a, b, c;
 
-        public InterpolationThree(
+        public InterpolateThree(
             double x1, double y1,
             double x2, double y2,
             double x3, double y3)
