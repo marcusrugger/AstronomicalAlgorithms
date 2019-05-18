@@ -5,6 +5,7 @@ namespace JeanMeeus.MSTest
     [TestClass]
     public class InterpolateThreeTests
     {
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Example 3.a
         [TestMethod]
         public void Example3a()
         {
