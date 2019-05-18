@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JeanMeeus
 {
-    public enum Weekdays : byte
+    public enum Weekday : byte
     {
         Sunday = 0x01,
         Monday = 0x02,
@@ -19,20 +19,20 @@ namespace JeanMeeus
         Weekday = Monday | Tuesday | Wednesday | Thursday | Friday
     }
 
-    public static class WeekdaysMethods
+    public static class WeekdayMethods
     {
-        public static Weekdays[] DaysOfWeek = new Weekdays[7]
+        public static Weekday[] DaysOfWeek = new Weekday[7]
         {
-            Weekdays.Sunday,
-            Weekdays.Monday,
-            Weekdays.Tuesday,
-            Weekdays.Wednesday,
-            Weekdays.Thursday,
-            Weekdays.Friday,
-            Weekdays.Saturday
+            Weekday.Sunday,
+            Weekday.Monday,
+            Weekday.Tuesday,
+            Weekday.Wednesday,
+            Weekday.Thursday,
+            Weekday.Friday,
+            Weekday.Saturday
         };
 
-        public static Weekdays FromIndex(int dayOfWeek)
+        public static Weekday FromIndex(int dayOfWeek)
         {
             if (dayOfWeek < 0 || dayOfWeek >= 7)
                 throw new ArgumentOutOfRangeException($"dayOfWeek must be 0-6, actual value was {dayOfWeek}");
@@ -40,29 +40,29 @@ namespace JeanMeeus
             return DaysOfWeek[dayOfWeek];
         }
 
-        public static int ToIndex(Weekdays day)
+        public static int ToIndex(Weekday day)
         {
             switch (day)
             {
-                case Weekdays.Sunday:
+                case Weekday.Sunday:
                     return 0;
 
-                case Weekdays.Monday:
+                case Weekday.Monday:
                     return 1;
 
-                case Weekdays.Tuesday:
+                case Weekday.Tuesday:
                     return 2;
 
-                case Weekdays.Wednesday:
+                case Weekday.Wednesday:
                     return 3;
 
-                case Weekdays.Thursday:
+                case Weekday.Thursday:
                     return 4;
 
-                case Weekdays.Friday:
+                case Weekday.Friday:
                     return 5;
 
-                case Weekdays.Saturday:
+                case Weekday.Saturday:
                     return 6;
 
                 default:
@@ -70,7 +70,7 @@ namespace JeanMeeus
             }
         }
 
-        public static Weekdays Add(Weekdays day, int value)
+        public static Weekday Add(Weekday day, int value)
         {
             int a = (ToIndex(day) + value) % 7;
             if (a < 0) a = 7 + a;
@@ -78,7 +78,7 @@ namespace JeanMeeus
         }
     }
 
-    public static class Months
+    public static class Month
     {
         public const int January = 1;
         public const int Febuary = 2;
@@ -141,11 +141,11 @@ namespace JeanMeeus
             return date.Instantiate(date.JulianDay - d);
         }
 
-        public Weekdays DayOfWeek
+        public Weekday DayOfWeek
         {
             get
             {
-                return WeekdaysMethods.FromIndex((int)((JulianDay + 1.5) % 7.0));
+                return WeekdayMethods.FromIndex((int)((JulianDay + 1.5) % 7.0));
             }
         }
     }

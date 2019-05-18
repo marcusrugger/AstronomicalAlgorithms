@@ -21,9 +21,9 @@ namespace JeanMeeus
                 jd = GregorianCalendar.ToJulianDay(year, month, day);
             else if (year < 1582)
                 jd = JulianCalendar.ToJulianDay(year, month, day);
-            else if (month > Months.October)
+            else if (month > Month.October)
                 jd = GregorianCalendar.ToJulianDay(year, month, day);
-            else if (month < Months.October)
+            else if (month < Month.October)
                 jd = JulianCalendar.ToJulianDay(year, month, day);
             else if (day >= 15.0)
                 jd = GregorianCalendar.ToJulianDay(year, month, day);

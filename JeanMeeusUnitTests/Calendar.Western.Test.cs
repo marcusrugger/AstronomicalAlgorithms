@@ -11,9 +11,9 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestCalendarToDate()
         {
-            TestDate(WesternCalendar.Create(2436116.31), 1957, Months.October, 4.81);
-            TestDate(WesternCalendar.Create(2418781.5), 1910, Months.April, 20.0);
-            TestDate(WesternCalendar.Create(2446470.5), 1986, Months.Febuary, 9.0);
+            TestDate(WesternCalendar.Create(2436116.31), 1957, Month.October, 4.81);
+            TestDate(WesternCalendar.Create(2418781.5), 1910, Month.April, 20.0);
+            TestDate(WesternCalendar.Create(2446470.5), 1986, Month.Febuary, 9.0);
 
             TestDate(WesternCalendar.Create(2451545.0), 2000, 1, 1.5);
             TestDate(WesternCalendar.Create(2446822.5), 1987, 1, 27.0);
@@ -43,8 +43,8 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestCalendarChangeOverInterval()
         {
-            var d1 = WesternCalendar.Create(1582, Months.October, 4.0);
-            var d2 = WesternCalendar.Create(1582, Months.October, 15.0);
+            var d1 = WesternCalendar.Create(1582, Month.October, 4.0);
+            var d2 = WesternCalendar.Create(1582, Month.October, 15.0);
 
             var diff = d2 - d1;
             Assert.AreEqual(1.0, diff);
@@ -58,7 +58,7 @@ namespace JeanMeeusUnitTests
         {
             try
             {
-                WesternCalendar.Create(1582, Months.October, 5.0);
+                WesternCalendar.Create(1582, Month.October, 5.0);
                 Assert.Fail("Expected argument out of range exception to occur");
             }
 
@@ -72,7 +72,7 @@ namespace JeanMeeusUnitTests
         {
             try
             {
-                WesternCalendar.Create(1582, Months.October, 14.0);
+                WesternCalendar.Create(1582, Month.October, 14.0);
                 Assert.Fail("Expected argument out of range exception to occur");
             }
 
@@ -84,9 +84,9 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestCalendarDayOfWeek()
         {
-            var date = WesternCalendar.Create(1954, Months.June, 30.0);
+            var date = WesternCalendar.Create(1954, Month.June, 30.0);
 
-            Assert.AreEqual(Weekdays.Wednesday, date.DayOfWeek);
+            Assert.AreEqual(Weekday.Wednesday, date.DayOfWeek);
         }
     }
 }

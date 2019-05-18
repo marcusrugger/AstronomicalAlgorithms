@@ -11,7 +11,7 @@ namespace JeanMeeusUnitTests
         [TestMethod]
         public void TestJulianToDate()
         {
-            TestDate(JulianCalendar.Create(1842713.0), 333, Months.January, 27.5);
+            TestDate(JulianCalendar.Create(1842713.0), 333, Month.January, 27.5);
 
             TestDate(JulianCalendar.Create(2026871.8), 837, 4, 10.3);
             TestDate(JulianCalendar.Create(1356001.0), -1000, 7, 12.5);
