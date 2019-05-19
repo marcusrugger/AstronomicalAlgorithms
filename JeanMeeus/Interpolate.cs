@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace JeanMeeus
 {
     public class Interpolate
@@ -76,6 +77,38 @@ namespace JeanMeeus
         {
             double y = y2 + (n / 2) * (a + b + n * c);
             return y;
+        }
+
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.4
+        public double ExtremumY
+        {
+            get { return y2 - (a+b) * (a+b) / (8 * c); }
+        }
+
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.5
+        public double ExtremumN
+        {
+            get { return -((a + b) / (2 * c)); }
+        }
+
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 26, Formula 3.6
+        public double Ybecomes0(double precision)
+        {
+            double nold = 0.0;
+            double n0 = f(nold);
+
+            while (Math.Abs(n0 - nold) > precision)
+            {
+                nold = n0;
+                n0 = f(nold);
+            }
+
+            return n0;
+
+            double f(double n)
+            {
+                return (-(2 * y2)) / (a + b + c * n);
+            }
         }
     }
 
