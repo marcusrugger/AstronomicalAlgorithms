@@ -9,7 +9,7 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3a()
         {
-            var fn = Interpolate.FromX(8.0, 0.884226, 0.877366, 0.870531);
+            var fn = Interpolator.FromX(8.0, 0.884226, 0.877366, 0.870531);
             Assert.AreEqual(0.876125, fn(8.18125), 0.000001);
         }
 
@@ -17,7 +17,7 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3e()
         {
-            var fn = Interpolate.FromX(
+            var fn = Interpolator.FromX(
                 28.0,
                 Sexagesimal(0, 54, 36.125),
                 Sexagesimal(0, 54, 24.606),
@@ -27,7 +27,7 @@ namespace JeanMeeus.MSTest
 
             double n = Sexagesimal(3, 20, 0) / 12.0;
             double x = 28.0 + n;
-            Assert.AreEqual(Sexagesimal(0, 54, 13.369), fn(x), 0.0000278);
+            Assert.AreEqual(Sexagesimal(0, 54, 13.369), fn(x), Sexagesimal(0, 0, 0.1));
         }
 
         private double Sexagesimal(double h, double m, double s)
