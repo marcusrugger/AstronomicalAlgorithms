@@ -7,7 +7,7 @@ namespace JeanMeeus.MSTest
     {
         private double Sexagesimal(double h, double m, double s)
         {
-            return h + m / 60.0 + s / 3600.0;
+            return Convert.Sexagecimal(h, m, s);
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Example 3.a
