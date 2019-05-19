@@ -9,16 +9,16 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3a()
         {
-            var fn = Interpolator.FromX(8.0, 0.884226, 0.877366, 0.870531);
-            Assert.AreEqual(0.876125, fn(8.18125), 0.000001);
+            var fn = Interpolator.FromN(0.884226, 0.877366, 0.870531);
+            double n = Sexagesimal(4, 21, 0) / 24.0;
+            Assert.AreEqual(0.876125, fn(n), 0.000001);
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 28, Example 3.e
         [TestMethod]
         public void Example3e()
         {
-            var fn = Interpolator.FromX(
-                28.0,
+            var fn = Interpolator.FromN(
                 Sexagesimal(0, 54, 36.125),
                 Sexagesimal(0, 54, 24.606),
                 Sexagesimal(0, 54, 15.486),
@@ -26,8 +26,7 @@ namespace JeanMeeus.MSTest
                 Sexagesimal(0, 54, 4.133));
 
             double n = Sexagesimal(3, 20, 0) / 12.0;
-            double x = 28.0 + n;
-            Assert.AreEqual(Sexagesimal(0, 54, 13.369), fn(x), Sexagesimal(0, 0, 0.1));
+            Assert.AreEqual(Sexagesimal(0, 54, 13.369), fn(n), Sexagesimal(0, 0, 0.1));
         }
 
         private double Sexagesimal(double h, double m, double s)
