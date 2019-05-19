@@ -29,7 +29,7 @@ namespace JeanMeeus.MSTest
             Assert.AreEqual(0.39660, fn.ExtremumN, 0.00001);
         }
 
-        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Example 3.c
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 26, Example 3.c
         [TestMethod]
         public void Example3c()
         {
@@ -39,6 +39,15 @@ namespace JeanMeeus.MSTest
                 Sexagesimal(0, 38, 23.2));
 
             Assert.AreEqual(-0.20127, fn.Ybecomes0(0.00001), 0.00001);
+        }
+
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 27, Example 3.d
+        [TestMethod]
+        public void Example3d()
+        {
+            var fn = new InterpolateThree(-2, 3, 2);
+
+            Assert.AreEqual(-0.720759220056, fn.CurvedYbecomes0(0.000000000001), 0.000000000001);
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 28, Example 3.e

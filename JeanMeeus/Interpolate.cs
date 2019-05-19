@@ -110,6 +110,27 @@ namespace JeanMeeus
                 return (-(2 * y2)) / (a + b + c * n);
             }
         }
+
+        // Astronomical Algorithms by Jean Meeus, Chapter 3, page 27, Formula 3.7
+        public double CurvedYbecomes0(double precision)
+        {
+            double n0 = 0.0;
+            double dn0;
+
+            do
+            {
+                dn0 = f(n0);
+                n0 += dn0;
+            }
+            while (Math.Abs(dn0) > precision);
+
+            return n0;
+
+            double f(double n)
+            {
+                return -((2 * y2 + n * (a + b + c * n)) / (a + b + 2 * c * n));
+            }
+        }
     }
 
     public class InterpolateFive
