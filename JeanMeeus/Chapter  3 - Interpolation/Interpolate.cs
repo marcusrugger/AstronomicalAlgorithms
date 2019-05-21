@@ -2,7 +2,7 @@
 
 namespace JeanMeeus
 {
-    public class Interpolate
+    public static class Interpolate
     {
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.3
         public static Func<double, double> FromN(double y1, double y2, double y3)
