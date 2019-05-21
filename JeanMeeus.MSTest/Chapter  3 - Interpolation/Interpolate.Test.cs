@@ -9,7 +9,7 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3a()
         {
-            var n = Convert.Sexagecimal(4, 21, 0) / 24.0;
+            var n = Convert.Sexagesimal(4, 21, 0) / 24.0;
             var y = Interpolate.FromN(0.884226, 0.877366, 0.870531)(n);
             Assert.AreEqual(0.876125, y, 0.000001);
         }
@@ -19,17 +19,17 @@ namespace JeanMeeus.MSTest
         public void Example3e()
         {
             var fn = Interpolate.FromN(
-                Convert.Sexagecimal(0, 54, 36.125),
-                Convert.Sexagecimal(0, 54, 24.606),
-                Convert.Sexagecimal(0, 54, 15.486),
-                Convert.Sexagecimal(0, 54, 8.694),
-                Convert.Sexagecimal(0, 54, 4.133));
+                Convert.Sexagesimal(0, 54, 36.125),
+                Convert.Sexagesimal(0, 54, 24.606),
+                Convert.Sexagesimal(0, 54, 15.486),
+                Convert.Sexagesimal(0, 54, 8.694),
+                Convert.Sexagesimal(0, 54, 4.133));
 
-            var n = Convert.Sexagecimal(3, 20, 0) / 12.0;
+            var n = Convert.Sexagesimal(3, 20, 0) / 12.0;
             var y = fn(n);
 
-            var expected = Convert.Sexagecimal(0, 54, 13.369);
-            var precision = Convert.Sexagecimal(0, 0, 0.001);
+            var expected = Convert.Sexagesimal(0, 54, 13.369);
+            var precision = Convert.Sexagesimal(0, 0, 0.001);
             Assert.AreEqual(expected, y, precision);
         }
 
@@ -55,14 +55,14 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void TestRangeFive()
         {
-            double y1 = Convert.Sexagecimal(0, 54, 36.125);
-            double y2 = Convert.Sexagecimal(0, 54, 24.606);
-            double y3 = Convert.Sexagecimal(0, 54, 15.486);
-            double y4 = Convert.Sexagecimal(0, 54, 8.694);
-            double y5 = Convert.Sexagecimal(0, 54, 4.133);
+            double y1 = Convert.Sexagesimal(0, 54, 36.125);
+            double y2 = Convert.Sexagesimal(0, 54, 24.606);
+            double y3 = Convert.Sexagesimal(0, 54, 15.486);
+            double y4 = Convert.Sexagesimal(0, 54, 8.694);
+            double y5 = Convert.Sexagesimal(0, 54, 4.133);
             var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
 
-            double precision = Convert.Sexagecimal(0, 0, 0.001);
+            double precision = Convert.Sexagesimal(0, 0, 0.001);
             Assert.AreEqual(y2, fn(-1.0), precision);
             Assert.AreEqual(y3, fn(0.0), precision);
             Assert.AreEqual(y4, fn(1.0), precision);

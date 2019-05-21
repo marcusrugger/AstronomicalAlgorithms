@@ -5,17 +5,12 @@ namespace JeanMeeus.MSTest
     [TestClass]
     public class InterpolateThreeTests
     {
-        private double Sexagesimal(double h, double m, double s)
-        {
-            return Convert.Sexagecimal(h, m, s);
-        }
-
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Example 3.a
         [TestMethod]
         public void Example3a()
         {
             var fn = new InterpolateThree(0.884226, 0.877366, 0.870531);
-            var n = Sexagesimal(4, 21, 0) / 24.0;
+            var n = Convert.Sexagesimal(4, 21, 0) / 24.0;
             var y = fn.FromN(n);
             Assert.AreEqual(0.876125, y, 0.000001);
         }
@@ -35,9 +30,9 @@ namespace JeanMeeus.MSTest
         public void Example3c()
         {
             var fn = new InterpolateThree(
-                -Sexagesimal(0, 28, 13.4),
-                Sexagesimal(0, 6, 46.3),
-                Sexagesimal(0, 38, 23.2));
+                -Convert.Sexagesimal(0, 28, 13.4),
+                Convert.Sexagesimal(0, 6, 46.3),
+                Convert.Sexagesimal(0, 38, 23.2));
 
             Assert.AreEqual(-0.20127, fn.Ybecomes0(0.00001), 0.00001);
         }

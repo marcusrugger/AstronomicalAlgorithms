@@ -10,7 +10,7 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void TestSexagecimal()
         {
-            double d = Convert.Sexagecimal(23, 26, 49);
+            double d = Convert.Sexagesimal(23, 26, 49);
             Assert.AreEqual(23.44694444, d, 0.00000001);
         }
     }
