@@ -14,6 +14,11 @@ Meeus describes interpolation as, _"the process of finding values for instants, 
 File: Interpolate.cs
 
 ```csharp
+// Where y1, y2, and y2 are obtained from the table of interest.
+// and where n is n = x - x2, where x is the intermediate x of interest.
 var fn = Interpolate.FromN(y1, y2, y3);
 var y = fn(n);
+
+// Or, if you are calculating only a single value, you may use:
+var y = Interpolate.FromN(y1, y2, y3)(n);
 ```
