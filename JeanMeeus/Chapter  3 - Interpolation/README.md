@@ -15,6 +15,8 @@ Meeus drives home the point of what the formula in this chapter are for: calcula
 ## Class Interpolate
 File: Interpolate.cs
 
+`Interpolate` is a static class with only two static methods.  One for interpolating from 3-points and another for interpolating from 5.  As the methods are static, the may be called directly.
+
 ```csharp
 // Where y1, y2, and y2 are obtained from the table of interest.
 // and where n is n = x - x2, where x is the intermediate x of interest.
