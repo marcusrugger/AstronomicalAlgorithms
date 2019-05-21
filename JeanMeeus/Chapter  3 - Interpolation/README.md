@@ -12,3 +12,8 @@ Meeus describes interpolation as, _"the process of finding values for instants, 
 
 ## Class Interpolate
 File: Interpolate.cs
+
+```csharp
+var fn = Interpolate.FromN(y1, y2, y3);
+var y = fn(n);
+```
