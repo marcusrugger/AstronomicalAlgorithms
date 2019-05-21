@@ -27,7 +27,9 @@ var y = fn(n);
 var y = Interpolate.FromN(y1, y2, y3)(n);
 ```
 ### Example 3.a
-Consider the example Meeus gives for the distance to Mars from Earth in November 1992.  Calculate the distance to Mars at November 8, at 4:21 AM (all times TD).  This example is also a unit test.
+Consider the example Meeus gives for the distance to Mars from Earth in November 1992.
+
+Calculate the distance to Mars on November 8, at 4:21 AM (all times TD).  This example is also a unit test.
 
 Date | Distance (AU)
 --- | ---
