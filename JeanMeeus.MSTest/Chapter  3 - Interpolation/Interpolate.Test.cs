@@ -5,16 +5,11 @@ namespace JeanMeeus.MSTest
     [TestClass]
     public class InterpolateTests
     {
-        private double Sexagesimal(double h, double m, double s)
-        {
-            return Convert.Sexagecimal(h, m, s);
-        }
-
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Example 3.a
         [TestMethod]
         public void Example3a()
         {
-            var n = Sexagesimal(4, 21, 0) / 24.0;
+            var n = Convert.Sexagecimal(4, 21, 0) / 24.0;
             var y = Interpolate.FromN(0.884226, 0.877366, 0.870531)(n);
             Assert.AreEqual(0.876125, y, 0.000001);
         }
@@ -24,15 +19,53 @@ namespace JeanMeeus.MSTest
         public void Example3e()
         {
             var fn = Interpolate.FromN(
-                Sexagesimal(0, 54, 36.125),
-                Sexagesimal(0, 54, 24.606),
-                Sexagesimal(0, 54, 15.486),
-                Sexagesimal(0, 54, 8.694),
-                Sexagesimal(0, 54, 4.133));
+                Convert.Sexagecimal(0, 54, 36.125),
+                Convert.Sexagecimal(0, 54, 24.606),
+                Convert.Sexagecimal(0, 54, 15.486),
+                Convert.Sexagecimal(0, 54, 8.694),
+                Convert.Sexagecimal(0, 54, 4.133));
 
-            var n = Sexagesimal(3, 20, 0) / 12.0;
+            var n = Convert.Sexagecimal(3, 20, 0) / 12.0;
             var y = fn(n);
-            Assert.AreEqual(Sexagesimal(0, 54, 13.369), y, Sexagesimal(0, 0, 0.1));
+
+            var expected = Convert.Sexagecimal(0, 54, 13.369);
+            var precision = Convert.Sexagecimal(0, 0, 0.001);
+            Assert.AreEqual(expected, y, precision);
+        }
+
+        // n = -1, should result in fn(n) == y1
+        // n =  0, should result in fn(n) == y2
+        // n =  1, should result in fn(n) == y3
+        [TestMethod]
+        public void TestRangeThree()
+        {
+            double y1 = 0.884226;
+            double y2 = 0.877366;
+            double y3 = 0.870531;
+            var fn = Interpolate.FromN(y1, y2, y3);
+
+            Assert.AreEqual(y1, fn(-1.0), 0.000001);
+            Assert.AreEqual(y2, fn(0.0), 0.000001);
+            Assert.AreEqual(y3, fn(1.0), 0.000001);
+        }
+
+        // n = -1, should result in fn(n) == y2
+        // n =  0, should result in fn(n) == y3
+        // n =  1, should result in fn(n) == y4
+        [TestMethod]
+        public void TestRangeFive()
+        {
+            double y1 = Convert.Sexagecimal(0, 54, 36.125);
+            double y2 = Convert.Sexagecimal(0, 54, 24.606);
+            double y3 = Convert.Sexagecimal(0, 54, 15.486);
+            double y4 = Convert.Sexagecimal(0, 54, 8.694);
+            double y5 = Convert.Sexagecimal(0, 54, 4.133);
+            var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
+
+            double precision = Convert.Sexagecimal(0, 0, 0.001);
+            Assert.AreEqual(y2, fn(-1.0), precision);
+            Assert.AreEqual(y3, fn(0.0), precision);
+            Assert.AreEqual(y4, fn(1.0), precision);
         }
     }
 }
