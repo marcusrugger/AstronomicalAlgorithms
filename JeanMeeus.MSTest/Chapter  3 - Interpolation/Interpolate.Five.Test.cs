@@ -23,7 +23,7 @@ namespace JeanMeeus.MSTest
 
             var n = Sexagesimal(3, 20, 0) / 12.0;
             var y = fn.FromN(n);
-            Assert.AreEqual(Sexagesimal(0, 54, 13.369), y, Sexagesimal(0, 0, 0.1));
+            Assert.AreEqual(Sexagesimal(0, 54, 13.369), y, Sexagesimal(0, 0, 0.001));
         }
     }
 }
