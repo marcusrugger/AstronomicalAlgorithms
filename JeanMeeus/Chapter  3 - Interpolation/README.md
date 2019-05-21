@@ -10,6 +10,8 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Interpolation), **interpo
 
 Meeus describes interpolation as, _"the process of finding values for instants, quantities, etc., intermediate to those given in a table."_
 
+Meeus drives home the point of what the formula in this chapter are for: calculating values intermediate to those given in a table.
+
 ## Class Interpolate
 File: Interpolate.cs
 
