@@ -26,3 +26,16 @@ var y = fn(n);
 // Or, if you are calculating only a single value, you may use:
 var y = Interpolate.FromN(y1, y2, y3)(n);
 ```
+Consider the example Meeus gives for the distance to Mars from Earth in November 1992.  Calculate the distance to Mars at November 8, at 4:21 AM (all times TD).  This example is also a unit test.
+
+Date | Distance (AU)
+--- | ---
+7 | 0.884 226
+8 | 0.877 366
+9 | 0.870 531
+
+```csharp
+var fn = Interpolate.FromN(0.884226, 0.877366, 0.870531);
+var y = fn(0.18125);
+Console.WriteLine($"y = {y}");
+```
