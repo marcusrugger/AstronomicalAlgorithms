@@ -12,7 +12,7 @@ Meeus describes interpolation as, _"the process of finding values for instants, 
 
 Meeus drives home the point of what the formula in this chapter are for: calculating values intermediate to those given in a table.
 
-## Class Interpolate
+## Class: Interpolate
 File: Interpolate.cs
 
 `Interpolate` is a static class with only two static methods.  One for interpolating from 3-points and another for interpolating from 5.  As the methods are static, the may be called directly.
@@ -69,4 +69,25 @@ var n = Convert.Sexagesimal(3, 20, 0) / 12;
 var y = fn(n);
 
 Console.WriteLine($"y = {y}");
+```
+## Class: InterpolateThree
+File: Interpolate.Three.cs
+
+In chapter 3, Meeus provides various algorithms for interpolating from three values.  Such as finding the extremum or calculating when y becomes 0.  This class implements those algorithms.
+### Example 3.b
+In this example, Meeus calculates the passage of Mars through perihelion in May 1992.
+
+Date | Distance (AU)
+--- | ---
+12.0 | 1.381 4294
+16.0 | 1.381 2213
+20.0 | 1.381 2453
+```csharp
+double y1 = 1.3814294;
+double y2 = 1.3812213;
+double y3 = 1.3812453;
+var interp = new InterpolateThree(y1, y2, y3);
+
+var y = interp.ExtremumY;
+var n = interp.ExtremumN;
 ```
