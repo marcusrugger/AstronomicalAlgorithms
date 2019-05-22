@@ -90,7 +90,7 @@ double y2 = 1.3812213;
 double y3 = 1.3812453;
 var interp = new InterpolateThree(y1, y2, y3);
 
-var y = interp.ExtremumY;  // Distance from sun at perihelion
 var n = interp.ExtremumN;  // The value of n at perihelion
 var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4, the table interval
+var y = interp.ExtremumY;  // Distance from sun at perihelion
 ```
