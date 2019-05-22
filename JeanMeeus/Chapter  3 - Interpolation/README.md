@@ -39,7 +39,31 @@ Date | Distance (AU)
 
 ```csharp
 var fn = Interpolate.FromN(0.884226, 0.877366, 0.870531);
-var n = Convert.Sexagecimal(4, 21, 0) / 24;
+var n = Convert.Sexagesimal(4, 21, 0) / 24;
 var y = fn(n);
+Console.WriteLine($"y = {y}");
+```
+### Example 3.e
+In this example, Meeus interpolates, from 5 values, the lunar parallax on February 28, 1992 at 3:20 AM TD.
+
+Date | Parallax
+--- | ---
+27.0 | 0&deg; 54' 36.125"
+27.5 | 0&deg; 54' 24.606"
+28.0 | 0&deg; 54' 15.486"
+28.5 | 0&deg; 54' 8.694"
+29.0 | 0&deg; 54' 4.133"
+
+```csharp
+double y1 = Convert.Sexagesimal(0, 54, 36.125);
+double y2 = Convert.Sexagesimal(0, 54, 24.606);
+double y3 = Convert.Sexagesimal(0, 54, 15.486);
+double y4 = Convert.Sexagesimal(0, 54, 8.694);
+double y5 = Convert.Sexagesimal(0, 54, 4.133);
+var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
+
+var n = Convert.Sexagesimal(3, 20, 0) / 12;
+var y = fn(n);
+
 Console.WriteLine($"y = {y}");
 ```
