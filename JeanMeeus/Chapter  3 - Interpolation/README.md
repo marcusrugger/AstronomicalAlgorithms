@@ -19,7 +19,10 @@ File: Interpolate.cs
 
 ```csharp
 // Where y1, y2, and y2 are obtained from the table of interest.
-// and where n is n = x - x2, where x is the intermediate x of interest.
+// and where n is typically -1.0 <= n <= 1.0, where:
+//   -1 corresponds to y1
+//    0 corresponds to y2
+//    1 corresponds to y3
 var fn = Interpolate.FromN(y1, y2, y3);
 var y = fn(n);
 
