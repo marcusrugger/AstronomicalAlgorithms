@@ -83,11 +83,14 @@ Date | Distance (AU)
 16.0 | 1.381 2213
 20.0 | 1.381 2453
 ```csharp
+double x2 = 16.0;
+
 double y1 = 1.3814294;
 double y2 = 1.3812213;
 double y3 = 1.3812453;
 var interp = new InterpolateThree(y1, y2, y3);
 
-var y = interp.ExtremumY;
-var n = interp.ExtremumN;
+var y = interp.ExtremumY;  // Distance from sun at perihelion
+var n = interp.ExtremumN;  // The value of n at perihelion
+var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4 because that is the interval in the table
 ```
