@@ -29,7 +29,7 @@ var y = Interpolate.FromN(y1, y2, y3)(n);
 ### Example 3.a
 Consider the example Meeus gives for the distance to Mars from Earth in November 1992.
 
-Calculate the distance to Mars on November 8, at 4:21 AM (all times TD).  This example is also a unit test.
+Calculate the distance to Mars on November 8, at 4:21 TD.  This example is also a unit test.
 
 Date | Distance (AU)
 --- | ---
@@ -44,7 +44,7 @@ var y = fn(n);
 Console.WriteLine($"y = {y}");
 ```
 ### Example 3.e
-In this example, Meeus interpolates, from 5 values, the lunar parallax on February 28, 1992 at 3:20 AM TD.
+In this example, Meeus interpolates, from 5 values, the lunar parallax on February 28, 1992 at 3:20 TD.
 
 Date | Parallax
 --- | ---
