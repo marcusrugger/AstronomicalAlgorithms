@@ -92,5 +92,5 @@ var interp = new InterpolateThree(y1, y2, y3);
 
 var y = interp.ExtremumY;  // Distance from sun at perihelion
 var n = interp.ExtremumN;  // The value of n at perihelion
-var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4 because that is the interval in the table
+var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4, the table interval
 ```
