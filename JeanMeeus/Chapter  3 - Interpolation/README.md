@@ -63,8 +63,8 @@ double y2 = Convert.Sexagesimal(0, 54, 24.606);
 double y3 = Convert.Sexagesimal(0, 54, 15.486);
 double y4 = Convert.Sexagesimal(0, 54, 8.694);
 double y5 = Convert.Sexagesimal(0, 54, 4.133);
-var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
 
+var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
 var n = Convert.Sexagesimal(3, 20, 0) / 12;
 var y = fn(n);
 
@@ -88,8 +88,8 @@ double x2 = 16.0;
 double y1 = 1.3814294;
 double y2 = 1.3812213;
 double y3 = 1.3812453;
-var interp = new InterpolateThree(y1, y2, y3);
 
+var interp = new InterpolateThree(y1, y2, y3);
 var n = interp.ExtremumN;  // The value of n at perihelion
 var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4, the table interval
 var y = interp.ExtremumY;  // Distance from sun at perihelion
