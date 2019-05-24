@@ -90,7 +90,28 @@ double y2 = 1.3812213;
 double y3 = 1.3812453;
 
 var interp = new InterpolateThree(y1, y2, y3);
-var n = interp.ExtremumN;  // The value of n at perihelion
-var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4, the table interval
+var n = interp.ExtremumN;  // Value of n at perihelion
+var x = x2 + 4 * n;        // Time of perihelion.  Multiply n by 4, the table interval
 var y = interp.ExtremumY;  // Distance from sun at perihelion
+```
+### Example 3.c
+For February of 1973, calculate when the planet Mercury's declination reaches 0.
+
+Date | Declination
+--- | ---
+26.0 | -0&deg; 28' 13.4"
+27.0 | +0&deg; 6' 46.3"
+28.0 | +0&deg; 38' 23.2"
+
+```csharp
+double x2 = 27.0;
+
+double y1 = -Convert.Sexagesimal(0, 28, 13.4);
+double y2 =  Convert.Sexagesimal(0, 6, 46.3);
+double y3 =  Convert.Sexagesimal(0, 38, 23.2);
+
+var interp = new InterpolateThree(y1, y2, y3);
+var precision = Convert.Sexagesimal(0, 0, 0.1);
+var n = interp.Ybecomes0(precision);
+var x = x2 + n;
 ```
