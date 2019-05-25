@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JeanMeeus.MSTest
 {
     [TestClass]
-    public class CalendarTests
+    public class WesternCalendarTests
     {
         [TestMethod]
         public void TestCalendarToDate()
