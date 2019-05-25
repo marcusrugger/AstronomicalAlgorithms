@@ -75,5 +75,14 @@ namespace JeanMeeus.MSTest
             Assert.AreEqual(Weekday.Monday, WeekdayMethods.Add(Weekday.Monday, 14));
             Assert.AreEqual(Weekday.Monday, WeekdayMethods.Add(Weekday.Monday, -14));
         }
+
+        // Example 7.e, page 65
+        [TestMethod]
+        public void TestFromJulianDay()
+        {
+            var calendar = WesternCalendar.Create(1954, Month.June, 30);
+            var weekday = WeekdayMethods.From(calendar);
+            Assert.AreEqual(Weekday.Wednesday, weekday);
+        }
     }
 }

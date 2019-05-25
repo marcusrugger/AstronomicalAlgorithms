@@ -82,14 +82,6 @@ namespace JeanMeeus.MSTest
             }
         }
 
-        [TestMethod]
-        public void TestCalendarDayOfWeek()
-        {
-            var date = WesternCalendar.Create(1954, Month.June, 30.0);
-
-            Assert.AreEqual(Weekday.Wednesday, date.DayOfWeek);
-        }
-
         // Example 7.c on page 64, including exercise
         [TestMethod]
         public void TestFromJulianDay()
