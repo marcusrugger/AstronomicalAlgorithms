@@ -36,6 +36,11 @@ namespace JeanMeeus
                                        : GregorianCalendar.IsLeapYear(year);
         }
 
+        public static bool IsLeapYear(Date date)
+        {
+            return IsLeapYear(date.Year);
+        }
+
         public static Date FromJulianDay(double JD)
         {
             return (JD < REFORM_JULIAN_DAY) ? JulianCalendar.FromJulianDay(JD)

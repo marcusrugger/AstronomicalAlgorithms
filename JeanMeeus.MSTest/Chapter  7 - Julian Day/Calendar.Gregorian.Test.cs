@@ -84,5 +84,20 @@ namespace JeanMeeus.MSTest
 
             Assert.AreEqual(27689, diff);
         }
+
+        [TestMethod]
+        public void TestDayOfTheYear()
+        {
+            Date date;
+            int N;
+
+            date = new Date(1978, Month.November, 14);
+            N = GregorianCalendar.DayOfTheYear(date);
+            Assert.AreEqual(318, N);
+
+            date = new Date(1988, Month.April, 22);
+            N = GregorianCalendar.DayOfTheYear(date);
+            Assert.AreEqual(113, N);
+        }
     }
 }

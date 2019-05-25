@@ -52,6 +52,22 @@ namespace JeanMeeus
                 return year % 4 == 0;
         }
 
+        public static bool IsLeapYear(Date date)
+        {
+            return IsLeapYear(date.Year);
+        }
+
+        public static int DayOfTheYear(Date date)
+        {
+            int M = date.Month;
+            int D = (int)date.Day;
+            int K = IsLeapYear(date) ? 1 : 2;
+
+            int N = 275 * M / 9 - K * ((M + 9) / 12) + D - 30;
+
+            return N;
+        }
+
         public static GregorianCalendar Create(double JD)
         {
             return new GregorianCalendar(JD);
