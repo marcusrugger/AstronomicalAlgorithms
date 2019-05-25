@@ -97,5 +97,24 @@ namespace JeanMeeus.MSTest
             date = WesternCalendar.FromJulianDay(1507900.13);
             TestDate(date, -584, Month.May, 28.63);
         }
+
+        // Leap year side-bar, page 62
+        [TestMethod]
+        public void TestLeapYear()
+        {
+            Assert.IsTrue(WesternCalendar.IsLeapYear(900));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1236));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1500));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1600));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1976));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(2000));
+
+            Assert.IsFalse(WesternCalendar.IsLeapYear(750));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1429));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1700));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1800));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1900));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1982));
+        }
     }
 }

@@ -4,17 +4,21 @@ namespace JeanMeeus
 {
     public class WesternCalendar : Calendar
     {
+        public const int REFORM_YEAR = 1582;
+        public const int REFORM_MONTH = Month.October;
+        public const double REFORM_JULIAN_DAY = 2299161.5;
+
         public static double ToJulianDay(int year, int month, double day)
         {
             double jd;
 
-            if (year > 1582)
+            if (year > REFORM_YEAR)
                 jd = GregorianCalendar.ToJulianDay(year, month, day);
-            else if (year < 1582)
+            else if (year < REFORM_YEAR)
                 jd = JulianCalendar.ToJulianDay(year, month, day);
-            else if (month > Month.October)
+            else if (month > REFORM_MONTH)
                 jd = GregorianCalendar.ToJulianDay(year, month, day);
-            else if (month < Month.October)
+            else if (month < REFORM_MONTH)
                 jd = JulianCalendar.ToJulianDay(year, month, day);
             else if (day >= 15.0)
                 jd = GregorianCalendar.ToJulianDay(year, month, day);
@@ -26,10 +30,16 @@ namespace JeanMeeus
             return jd;
         }
 
+        public static bool IsLeapYear(int year)
+        {
+            return year <= REFORM_YEAR ? JulianCalendar.IsLeapYear(year)
+                                       : GregorianCalendar.IsLeapYear(year);
+        }
+
         public static Date FromJulianDay(double JD)
         {
-            return (JD < 2299161.5) ? JulianCalendar.FromJulianDay(JD)
-                                    : GregorianCalendar.FromJulianDay(JD);
+            return (JD < REFORM_JULIAN_DAY) ? JulianCalendar.FromJulianDay(JD)
+                                            : GregorianCalendar.FromJulianDay(JD);
         }
 
         public static WesternCalendar Create(double JD)

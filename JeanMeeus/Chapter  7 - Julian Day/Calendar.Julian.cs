@@ -42,6 +42,11 @@ namespace JeanMeeus
             return new Date(year, month, day);
         }
 
+        public static bool IsLeapYear(int year)
+        {
+            return year % 4 == 0;
+        }
+
         public static JulianCalendar Create(double JD)
         {
             return new JulianCalendar(JD);
