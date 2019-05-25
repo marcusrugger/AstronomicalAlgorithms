@@ -18,13 +18,13 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3e()
         {
-            var fn = Interpolate.Given(
-                Convert.Sexagesimal(0, 54, 36.125),
-                Convert.Sexagesimal(0, 54, 24.606),
-                Convert.Sexagesimal(0, 54, 15.486),
-                Convert.Sexagesimal(0, 54, 8.694),
-                Convert.Sexagesimal(0, 54, 4.133));
+            double y1 = Convert.Sexagesimal(0, 54, 36.125);
+            double y2 = Convert.Sexagesimal(0, 54, 24.606);
+            double y3 = Convert.Sexagesimal(0, 54, 15.486);
+            double y4 = Convert.Sexagesimal(0, 54, 8.694);
+            double y5 = Convert.Sexagesimal(0, 54, 4.133);
 
+            var fn = Interpolate.Given(y1, y2, y3, y4, y5);
             var n = Convert.Sexagesimal(3, 20, 0) / 12.0;
             var y = fn(n);
 
