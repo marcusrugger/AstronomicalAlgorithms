@@ -10,7 +10,7 @@ namespace JeanMeeus.MSTest
         public void Example3a()
         {
             var n = Convert.Sexagesimal(4, 21, 0) / 24.0;
-            var y = Interpolate.FromN(0.884226, 0.877366, 0.870531)(n);
+            var y = Interpolate.Given(0.884226, 0.877366, 0.870531)(n);
             Assert.AreEqual(0.876125, y, 0.000001);
         }
 
@@ -18,13 +18,13 @@ namespace JeanMeeus.MSTest
         [TestMethod]
         public void Example3e()
         {
-            var fn = Interpolate.FromN(
-                Convert.Sexagesimal(0, 54, 36.125),
-                Convert.Sexagesimal(0, 54, 24.606),
-                Convert.Sexagesimal(0, 54, 15.486),
-                Convert.Sexagesimal(0, 54, 8.694),
-                Convert.Sexagesimal(0, 54, 4.133));
+            double y1 = Convert.Sexagesimal(0, 54, 36.125);
+            double y2 = Convert.Sexagesimal(0, 54, 24.606);
+            double y3 = Convert.Sexagesimal(0, 54, 15.486);
+            double y4 = Convert.Sexagesimal(0, 54, 8.694);
+            double y5 = Convert.Sexagesimal(0, 54, 4.133);
 
+            var fn = Interpolate.Given(y1, y2, y3, y4, y5);
             var n = Convert.Sexagesimal(3, 20, 0) / 12.0;
             var y = fn(n);
 
@@ -42,7 +42,7 @@ namespace JeanMeeus.MSTest
             double y1 = 0.884226;
             double y2 = 0.877366;
             double y3 = 0.870531;
-            var fn = Interpolate.FromN(y1, y2, y3);
+            var fn = Interpolate.Given(y1, y2, y3);
 
             Assert.AreEqual(y1, fn(-1.0), 0.000001);
             Assert.AreEqual(y2, fn(0.0), 0.000001);
@@ -60,7 +60,7 @@ namespace JeanMeeus.MSTest
             double y3 = Convert.Sexagesimal(0, 54, 15.486);
             double y4 = Convert.Sexagesimal(0, 54, 8.694);
             double y5 = Convert.Sexagesimal(0, 54, 4.133);
-            var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
+            var fn = Interpolate.Given(y1, y2, y3, y4, y5);
 
             double precision = Convert.Sexagesimal(0, 0, 0.001);
             Assert.AreEqual(y2, fn(-1.0), precision);

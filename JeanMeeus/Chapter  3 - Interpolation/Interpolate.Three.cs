@@ -17,7 +17,7 @@ namespace JeanMeeus
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.3
-        public double FromN(double n)
+        public double FindY(double n)
         {
             double y = y2 + (n / 2) * (a + b + n * c);
             return y;

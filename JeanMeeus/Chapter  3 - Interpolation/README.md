@@ -23,16 +23,16 @@ File: Interpolate.cs
 //   -1 corresponds to y1
 //    0 corresponds to y2
 //    1 corresponds to y3
-var fn = Interpolate.FromN(y1, y2, y3);
+var fn = Interpolate.Given(y1, y2, y3);
 var y = fn(n);
 
 // Or, if you are calculating only a single value, you may use:
-var y = Interpolate.FromN(y1, y2, y3)(n);
+var y = Interpolate.Given(y1, y2, y3)(n);
 ```
 ### Example 3.a
 Consider the example Meeus gives for the distance to Mars from Earth in November 1992.
 
-Calculate the distance to Mars on November 8, at 4:21 TD.  This example is also a unit test.
+Calculate the distance to Mars on November 8, at 4:21 TD.  Meeus provides this table:
 
 Date | Distance (AU)
 --- | ---
@@ -41,7 +41,7 @@ Date | Distance (AU)
 9 | 0.870 531
 
 ```csharp
-var fn = Interpolate.FromN(0.884226, 0.877366, 0.870531);
+var fn = Interpolate.Given(0.884226, 0.877366, 0.870531);
 var n = Convert.Sexagesimal(4, 21, 0) / 24;
 var y = fn(n);
 Console.WriteLine($"y = {y}");
@@ -64,7 +64,7 @@ double y3 = Convert.Sexagesimal(0, 54, 15.486);
 double y4 = Convert.Sexagesimal(0, 54, 8.694);
 double y5 = Convert.Sexagesimal(0, 54, 4.133);
 
-var fn = Interpolate.FromN(y1, y2, y3, y4, y5);
+var fn = Interpolate.Given(y1, y2, y3, y4, y5);
 var n = Convert.Sexagesimal(3, 20, 0) / 12;
 var y = fn(n);
 
@@ -90,7 +90,28 @@ double y2 = 1.3812213;
 double y3 = 1.3812453;
 
 var interp = new InterpolateThree(y1, y2, y3);
-var n = interp.ExtremumN;  // The value of n at perihelion
-var x = x2 + 4 * n;        // The time of perihelion.  Multiply n by 4, the table interval
+var n = interp.ExtremumN;  // Value of n at perihelion
+var x = x2 + 4 * n;        // Time of perihelion.  Multiply n by 4, the table interval
 var y = interp.ExtremumY;  // Distance from sun at perihelion
+```
+### Example 3.c
+For February of 1973, calculate when the planet Mercury's declination reaches 0.
+
+Date | Declination
+--- | ---
+26.0 | -0&deg; 28' 13.4"
+27.0 | +0&deg; 6' 46.3"
+28.0 | +0&deg; 38' 23.2"
+
+```csharp
+double x2 = 27.0;
+
+double y1 = -Convert.Sexagesimal(0, 28, 13.4);
+double y2 =  Convert.Sexagesimal(0, 6, 46.3);
+double y3 =  Convert.Sexagesimal(0, 38, 23.2);
+
+var interp = new InterpolateThree(y1, y2, y3);
+var precision = Convert.Sexagesimal(0, 0, 0.1);
+var n = interp.Ybecomes0(precision);
+var x = x2 + n;
 ```

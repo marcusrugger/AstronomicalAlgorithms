@@ -5,7 +5,7 @@ namespace JeanMeeus
     public static class Interpolate
     {
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.3
-        public static Func<double, double> FromN(double y1, double y2, double y3)
+        public static Func<double, double> Given(double y1, double y2, double y3)
         {
             var a = y2 - y1;
             var b = y3 - y2;
@@ -15,7 +15,7 @@ namespace JeanMeeus
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 28, Formula 3.8
-        public static Func<double, double> FromN(double y1, double y2, double y3, double y4, double y5)
+        public static Func<double, double> Given(double y1, double y2, double y3, double y4, double y5)
         {
             var a = y2 - y1;
             var b = y3 - y2;
