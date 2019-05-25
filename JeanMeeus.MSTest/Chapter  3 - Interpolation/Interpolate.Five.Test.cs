@@ -17,7 +17,7 @@ namespace JeanMeeus.MSTest
                 Convert.Sexagesimal(0, 54, 4.133));
 
             var n = Convert.Sexagesimal(3, 20, 0) / 12.0;
-            var y = fn.FromN(n);
+            var y = fn.FindY(n);
 
             var expected = Convert.Sexagesimal(0, 54, 13.369);
             var precision = Convert.Sexagesimal(0, 0, 0.001);

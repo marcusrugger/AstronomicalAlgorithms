@@ -11,7 +11,7 @@ namespace JeanMeeus.MSTest
         {
             var fn = new InterpolateThree(0.884226, 0.877366, 0.870531);
             var n = Convert.Sexagesimal(4, 21, 0) / 24.0;
-            var y = fn.FromN(n);
+            var y = fn.FindY(n);
             Assert.AreEqual(0.876125, y, 0.000001);
         }
 
