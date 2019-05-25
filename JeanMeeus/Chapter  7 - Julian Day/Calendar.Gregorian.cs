@@ -41,12 +41,7 @@ namespace JeanMeeus
             int month = (int)(E < 14 ? E - 1 : E - 13);
             int year = (int)(month > 2 ? C - 4716 : C - 4715);
 
-            return new Date()
-            {
-                Year = year,
-                Month = month,
-                Day = day
-            };
+            return new Date(year, month, day);
         }
 
         public static GregorianCalendar Create(double JD)

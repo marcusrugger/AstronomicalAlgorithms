@@ -99,11 +99,4 @@ namespace JeanMeeus
         public const int November = 11;
         public const int December = 12;
     }
-
-    public struct Date
-    {
-        public int Year;
-        public int Month;
-        public double Day;
-    }
 }
