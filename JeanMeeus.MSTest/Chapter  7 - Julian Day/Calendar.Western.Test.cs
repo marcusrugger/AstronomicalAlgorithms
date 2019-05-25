@@ -31,8 +31,11 @@ namespace JeanMeeus.MSTest
 
         private void TestDate(Calendar calendar, int expectedYear, int expectedMonth, double expectedDay)
         {
-            var date = calendar.Date;
+            TestDate(calendar.Date, expectedYear, expectedMonth, expectedDay);
+        }
 
+        private void TestDate(Date date, int expectedYear, int expectedMonth, double expectedDay)
+        {
             Assert.AreEqual(expectedYear, date.Year);
             Assert.AreEqual(expectedMonth, date.Month);
             Assert.AreEqual(expectedDay, date.Day, 0.001);
@@ -85,6 +88,22 @@ namespace JeanMeeus.MSTest
             var date = WesternCalendar.Create(1954, Month.June, 30.0);
 
             Assert.AreEqual(Weekday.Wednesday, date.DayOfWeek);
+        }
+
+        // Example 7.c on page 64, including exercise
+        [TestMethod]
+        public void TestFromJulianDay()
+        {
+            Date date;
+
+            date = WesternCalendar.FromJulianDay(2436116.31);
+            TestDate(date, 1957, Month.October, 4.81);
+
+            date = WesternCalendar.FromJulianDay(1842713.0);
+            TestDate(date, 333, Month.January, 27.5);
+
+            date = WesternCalendar.FromJulianDay(1507900.13);
+            TestDate(date, -584, Month.May, 28.63);
         }
     }
 }

@@ -4,12 +4,7 @@ namespace JeanMeeus
 {
     public class WesternCalendar : Calendar
     {
-        public static WesternCalendar Create(double JD)
-        {
-            return new WesternCalendar(JD);
-        }
-
-        public static WesternCalendar Create(int year, int month, double day)
+        public static double ToJulianDay(int year, int month, double day)
         {
             double jd;
 
@@ -28,12 +23,33 @@ namespace JeanMeeus
             else
                 throw new ArgumentOutOfRangeException("Invalid date: Date cannot be between Oct 4, 1582 and Oct 15, 1582");
 
-            return Create(jd);
+            return jd;
+        }
+
+        public static Date FromJulianDay(double JD)
+        {
+            return (JD < 2299161.5) ? JulianCalendar.FromJulianDay(JD)
+                                    : GregorianCalendar.FromJulianDay(JD);
+        }
+
+        public static WesternCalendar Create(double JD)
+        {
+            return new WesternCalendar(JD);
+        }
+
+        public static WesternCalendar Create(int year, int month, double day)
+        {
+            return Create(ToJulianDay(year, month, day));
         }
 
         public static WesternCalendar Create(Date date)
         {
             return Create(date.Year, date.Month, date.Day);
+        }
+
+        public static WesternCalendar Create(Calendar calendar)
+        {
+            return Create(calendar.JulianDay);
         }
 
         private WesternCalendar(double julianDay)
@@ -56,11 +72,7 @@ namespace JeanMeeus
 
         public override Date Date
         {
-            get
-            {
-                return (JulianDay < 2299161.5) ? JulianCalendar.FromJulianDay(JulianDay)
-                                               : GregorianCalendar.FromJulianDay(JulianDay);
-            }
+            get => FromJulianDay(JulianDay);
         }
     }
 }
