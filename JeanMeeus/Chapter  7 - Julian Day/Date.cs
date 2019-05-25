@@ -48,7 +48,7 @@ namespace JeanMeeus
             var second = Math.Truncate(remainder);
 
             remainder = 1000.0 * (remainder - second);
-            var millisecond = Math.Truncate(remainder);
+            var millisecond = Math.Truncate(remainder + 0.5);
 
             return new DateTime(
                 Year,
