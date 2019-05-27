@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace JeanMeeus.MSTest
 {
     [TestClass]
-    public class CalendarTests
+    public class WesternCalendarTests
     {
         [TestMethod]
         public void TestCalendarToDate()
@@ -31,8 +31,11 @@ namespace JeanMeeus.MSTest
 
         private void TestDate(Calendar calendar, int expectedYear, int expectedMonth, double expectedDay)
         {
-            var date = calendar.Date;
+            TestDate(calendar.Date, expectedYear, expectedMonth, expectedDay);
+        }
 
+        private void TestDate(Date date, int expectedYear, int expectedMonth, double expectedDay)
+        {
             Assert.AreEqual(expectedYear, date.Year);
             Assert.AreEqual(expectedMonth, date.Month);
             Assert.AreEqual(expectedDay, date.Day, 0.001);
@@ -79,12 +82,39 @@ namespace JeanMeeus.MSTest
             }
         }
 
+        // Example 7.c on page 64, including exercise
         [TestMethod]
-        public void TestCalendarDayOfWeek()
+        public void TestFromJulianDay()
         {
-            var date = WesternCalendar.Create(1954, Month.June, 30.0);
+            Date date;
 
-            Assert.AreEqual(Weekday.Wednesday, date.DayOfWeek);
+            date = WesternCalendar.FromJulianDay(2436116.31);
+            TestDate(date, 1957, Month.October, 4.81);
+
+            date = WesternCalendar.FromJulianDay(1842713.0);
+            TestDate(date, 333, Month.January, 27.5);
+
+            date = WesternCalendar.FromJulianDay(1507900.13);
+            TestDate(date, -584, Month.May, 28.63);
+        }
+
+        // Leap year side-bar, page 62
+        [TestMethod]
+        public void TestLeapYear()
+        {
+            Assert.IsTrue(WesternCalendar.IsLeapYear(900));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1236));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1500));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1600));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(1976));
+            Assert.IsTrue(WesternCalendar.IsLeapYear(2000));
+
+            Assert.IsFalse(WesternCalendar.IsLeapYear(750));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1429));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1700));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1800));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1900));
+            Assert.IsFalse(WesternCalendar.IsLeapYear(1982));
         }
     }
 }

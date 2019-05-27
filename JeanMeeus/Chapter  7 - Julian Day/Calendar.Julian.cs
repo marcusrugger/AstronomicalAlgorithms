@@ -39,12 +39,28 @@ namespace JeanMeeus
             int month = (int)(E < 14 ? E - 1 : E - 13);
             int year = (int)(month > 2 ? C - 4716 : C - 4715);
 
-            return new Date()
-            {
-                Year = year,
-                Month = month,
-                Day = day
-            };
+            return new Date(year, month, day);
+        }
+
+        public static bool IsLeapYear(int year)
+        {
+            return year % 4 == 0;
+        }
+
+        public static bool IsLeapYear(Date date)
+        {
+            return IsLeapYear(date.Year);
+        }
+
+        public static int DayOfTheYear(Date date)
+        {
+            int M = date.Month;
+            int D = (int)date.Day;
+            int K = IsLeapYear(date) ? 1 : 2;
+
+            int N = 275 * M / 9 - K * ((M + 9) / 12) + D - 30;
+
+            return N;
         }
 
         public static JulianCalendar Create(double JD)
