@@ -13,10 +13,7 @@ namespace JeanMeeus.MSTest
         public void TestBinarySearchExample5b()
         {
             var biterator = Iteration.Create(0, 1, PRECISION);
-            var result = biterator((x) =>
-            {
-                return Math.Pow(x, 5) + 17 * x - 8;
-            });
+            var result = biterator((x) => Math.Pow(x, 5) + 17 * x - 8);
 
             double expected = 0.469249878;
             Assert.AreEqual(expected, result, PRECISION);
@@ -27,10 +24,7 @@ namespace JeanMeeus.MSTest
         public void TestBinarySearchExample5c()
         {
             var biterator = Iteration.Create(1, 2, PRECISION);
-            var result = biterator((x) =>
-            {
-                return Math.Pow(x, 5) + 3 * x - 8;
-            });
+            var result = biterator((x) => Math.Pow(x, 5) + 3 * x - 8);
 
             double expected = 1.321785627;
             Assert.AreEqual(expected, result, PRECISION);
