@@ -2,19 +2,19 @@ using System;
 
 namespace JeanMeeus
 {
-    public class Iteration
+    public class BinarySearch
     {
-        private double sx1;
-        private double sx2;
-        private double precision;
+        private readonly double sx1;
+        private readonly double sx2;
+        private readonly double precision;
 
         public static Func<Func<double, double>, double> Create(double x1, double x2, double precision)
         {
-            var obj = new Iteration(x1, x2, precision);
-            return obj.BinarySearch;
+            var obj = new BinarySearch(x1, x2, precision);
+            return obj.Iterate;
         }
 
-        private Iteration(double x1, double x2, double precision)
+        private BinarySearch(double x1, double x2, double precision)
         {
             this.sx1 = x1;
             this.sx2 = x2;
@@ -22,7 +22,7 @@ namespace JeanMeeus
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 5, page 53, The binary search
-        private double BinarySearch(Func<double, double> fn)
+        private double Iterate(Func<double, double> fn)
         {
             double x1 = this.sx1; double y1 = fn(x1);
             double x2 = this.sx2; double y2 = fn(x2);
