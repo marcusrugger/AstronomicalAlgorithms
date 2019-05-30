@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace JeanMeeus
 {
@@ -23,12 +22,12 @@ namespace JeanMeeus
         public LinearRegression(Point[] points)
         {
             double N = points.Length;
-            double Ex = 0, Ey = 0, Exy = 0, Ex2= 0;
+            double Ex = 0, Ey = 0, Exy = 0, Ex2 = 0;
 
             foreach (var p in points)
             {
-                Ex += p.x;
-                Ey += p.y;
+                Ex  += p.x;
+                Ey  += p.y;
                 Exy += p.x * p.y;
                 Ex2 += p.x * p.x;
             }
