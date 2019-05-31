@@ -10,20 +10,16 @@ namespace JeanMeeus
 
     public class LinearRegression
     {
-        public readonly double a;
-        public readonly double b;
-        public readonly double r;
-
-        public static Func<double, double> Create(Point[] points)
-        {
-            var line = new LinearRegression(points);
-            return line.f;
-        }
+        public readonly double N;
+        public readonly double Ex;
+        public readonly double Ey;
+        public readonly double Exy;
+        public readonly double Ex2;
+        public readonly double Ey2;
 
         public LinearRegression(Point[] points)
         {
-            double N = points.Length;
-            double Ex = 0, Ey = 0, Exy = 0, Ex2 = 0, Ey2 = 0;
+            N = points.Length;
 
             foreach (var p in points)
             {
@@ -33,15 +29,12 @@ namespace JeanMeeus
                 Ex2 += p.x * p.x;
                 Ey2 += p.y * p.y;
             }
-
-            a = (N * Exy - Ex * Ey) / (N * Ex2 - Ex * Ex);
-            b = (Ey * Ex2 - Ex * Exy) / (N * Ex2 - Ex * Ex);
-            r = (N * Exy - Ex * Ey) / (Math.Sqrt(N * Ex2 - Ex * Ex) * Math.Sqrt(N * Ey2 - Ey * Ey));
         }
 
-        public double f(double x)
-        {
-            return a * x + b;
-        }
+        public double a => (N * Exy - Ex * Ey) / (N * Ex2 - Ex * Ex);
+        public double b => (Ey * Ex2 - Ex * Exy) / (N * Ex2 - Ex * Ex);
+        public double r => (N * Exy - Ex * Ey) / (Math.Sqrt(N * Ex2 - Ex * Ex) * Math.Sqrt(N * Ey2 - Ey * Ey));
+
+        public double fn(double x) => a * x + b;
     }
 }
