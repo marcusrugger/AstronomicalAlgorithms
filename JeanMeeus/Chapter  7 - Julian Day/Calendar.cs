@@ -6,15 +6,8 @@ namespace JeanMeeus
     {
         public readonly double JulianDay;
 
-        protected Calendar(double julianDay)
-        {
-            JulianDay = julianDay;
-        }
-
-        protected Calendar(Calendar date)
-        {
-            JulianDay = date.JulianDay;
-        }
+        protected Calendar(double julianDay) => JulianDay = julianDay;
+        protected Calendar(Calendar date) => JulianDay = date.JulianDay;
 
         public abstract Calendar Clone();
 
@@ -22,19 +15,10 @@ namespace JeanMeeus
 
         public abstract Date Date { get; }
 
-        public static double operator -(Calendar d1, Calendar d2)
-        {
-            return d1.JulianDay - d2.JulianDay;
-        }
+        public static double operator -(Calendar d1, Calendar d2) => d1.JulianDay - d2.JulianDay;
 
-        public static Calendar operator +(Calendar date, double d)
-        {
-            return date.Instantiate(date.JulianDay + d);
-        }
+        public static Calendar operator +(Calendar date, double d) => date.Instantiate(date.JulianDay + d);
 
-        public static Calendar operator -(Calendar date, double d)
-        {
-            return date.Instantiate(date.JulianDay - d);
-        }
+        public static Calendar operator -(Calendar date, double d) => date.Instantiate(date.JulianDay - d);
     }
 }

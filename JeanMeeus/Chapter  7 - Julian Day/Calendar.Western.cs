@@ -30,42 +30,18 @@ namespace JeanMeeus
             return jd;
         }
 
-        public static bool IsLeapYear(int year)
-        {
-            return year <= REFORM_YEAR ? JulianCalendar.IsLeapYear(year)
-                                       : GregorianCalendar.IsLeapYear(year);
-        }
+        public static bool IsLeapYear(int year) => year <= REFORM_YEAR ? JulianCalendar.IsLeapYear(year)
+                                                                       : GregorianCalendar.IsLeapYear(year);
 
-        public static bool IsLeapYear(Date date)
-        {
-            return IsLeapYear(date.Year);
-        }
+        public static bool IsLeapYear(Date date) => IsLeapYear(date.Year);
 
-        public static Date FromJulianDay(double JD)
-        {
-            return (JD < REFORM_JULIAN_DAY) ? JulianCalendar.FromJulianDay(JD)
-                                            : GregorianCalendar.FromJulianDay(JD);
-        }
+        public static Date FromJulianDay(double JD) => (JD < REFORM_JULIAN_DAY) ? JulianCalendar.FromJulianDay(JD)
+                                                                                : GregorianCalendar.FromJulianDay(JD);
 
-        public static WesternCalendar Create(double JD)
-        {
-            return new WesternCalendar(JD);
-        }
-
-        public static WesternCalendar Create(int year, int month, double day)
-        {
-            return Create(ToJulianDay(year, month, day));
-        }
-
-        public static WesternCalendar Create(Date date)
-        {
-            return Create(date.Year, date.Month, date.Day);
-        }
-
-        public static WesternCalendar Create(Calendar calendar)
-        {
-            return Create(calendar.JulianDay);
-        }
+        public static WesternCalendar Create(double JD) => new WesternCalendar(JD);
+        public static WesternCalendar Create(int year, int month, double day) => Create(ToJulianDay(year, month, day));
+        public static WesternCalendar Create(Date date) => Create(date.Year, date.Month, date.Day);
+        public static WesternCalendar Create(Calendar calendar) => Create(calendar.JulianDay);
 
         private WesternCalendar(double julianDay)
         : base(julianDay)
@@ -75,19 +51,10 @@ namespace JeanMeeus
         : base(date.JulianDay)
         { }
 
-        public override Calendar Clone()
-        {
-            return new WesternCalendar(this);
-        }
+        public override Calendar Clone() => new WesternCalendar(this);
 
-        protected override Calendar Instantiate(double jd)
-        {
-            return new WesternCalendar(jd);
-        }
+        protected override Calendar Instantiate(double jd) => new WesternCalendar(jd);
 
-        public override Date Date
-        {
-            get => FromJulianDay(JulianDay);
-        }
+        public override Date Date => FromJulianDay(JulianDay);
     }
 }

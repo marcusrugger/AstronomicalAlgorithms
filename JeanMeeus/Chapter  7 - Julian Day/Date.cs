@@ -8,10 +8,7 @@ namespace JeanMeeus
         public readonly int Month;
         public readonly double Day;
 
-        public static Date Now
-        {
-            get => new Date(DateTime.Now);
-        }
+        public static Date Now => new Date(DateTime.Now);
 
         public Date(int year, int month, double day)
         {
@@ -60,14 +57,7 @@ namespace JeanMeeus
                 (int)millisecond);
         }
 
-        public static implicit operator DateTime(Date date)
-        {
-            return date.ToDateTime();
-        }
-
-        public static implicit operator Date(DateTime date)
-        {
-            return new Date(date);
-        }
+        public static implicit operator DateTime(Date date) => date.ToDateTime();
+        public static implicit operator Date(DateTime date) => new Date(date);
     }
 }

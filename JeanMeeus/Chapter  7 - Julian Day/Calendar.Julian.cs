@@ -42,15 +42,8 @@ namespace JeanMeeus
             return new Date(year, month, day);
         }
 
-        public static bool IsLeapYear(int year)
-        {
-            return year % 4 == 0;
-        }
-
-        public static bool IsLeapYear(Date date)
-        {
-            return IsLeapYear(date.Year);
-        }
+        public static bool IsLeapYear(int year) => year % 4 == 0;
+        public static bool IsLeapYear(Date date) => IsLeapYear(date.Year);
 
         public static int DayOfTheYear(Date date)
         {
@@ -63,20 +56,10 @@ namespace JeanMeeus
             return N;
         }
 
-        public static JulianCalendar Create(double JD)
-        {
-            return new JulianCalendar(JD);
-        }
-
-        public static JulianCalendar Create(int year, int month, double day)
-        {
-            return Create( ToJulianDay(year, month, day) );
-        }
-
-        public static JulianCalendar Create(Date date)
-        {
-            return Create(date.Year, date.Month, date.Day);
-        }
+        public static JulianCalendar Create(double JD) => new JulianCalendar(JD);
+        public static JulianCalendar Create(int year, int month, double day) => Create( ToJulianDay(year, month, day) );
+        public static JulianCalendar Create(Date date) => Create(date.Year, date.Month, date.Day);
+        public static JulianCalendar Create(Calendar date) => Create(date.JulianDay);
 
         public static JulianCalendar Create(int year, int month, int day, int hour, int minute, int second, int millisecond)
         {
@@ -89,11 +72,6 @@ namespace JeanMeeus
             return Create(year, month, d);
         }
 
-        public static JulianCalendar Create(Calendar date)
-        {
-            return Create(date.JulianDay);
-        }
-
         private JulianCalendar(double julianDay)
         : base(julianDay)
         { }
@@ -102,20 +80,10 @@ namespace JeanMeeus
         : base(date)
         { }
 
-        public override Calendar Clone()
-        {
-            return new JulianCalendar(this);
-        }
+        public override Calendar Clone() => new JulianCalendar(this);
 
-        protected override Calendar Instantiate(double jd)
-        {
-            return new JulianCalendar(jd);
-        }
+        protected override Calendar Instantiate(double jd) => new JulianCalendar(jd);
 
-        public override Date Date
-        {
-            get
-            { return FromJulianDay(JulianDay); }
-        }
+        public override Date Date => FromJulianDay(JulianDay);
     }
 }

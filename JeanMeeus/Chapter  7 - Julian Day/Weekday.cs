@@ -28,25 +28,18 @@ namespace JeanMeeus
             Weekday.Saturday
         };
 
-        public static Weekday From(double julianDay)
-        {
-            return FromIndex((int)((julianDay + 1.5) % 7.0));
-        }
-
-        public static Weekday From(Calendar calendar)
-        {
-            return From(calendar.JulianDay);
-        }
+        public static Weekday From(double julianDay) => FromIndex((int)((julianDay + 1.5) % 7.0));
+        public static Weekday From(Calendar calendar) => From(calendar.JulianDay);
 
         public static Weekday FromIndex(int dayOfWeek)
         {
             if (dayOfWeek < 0 || dayOfWeek >= 7)
-                throw new ArgumentOutOfRangeException($"dayOfWeek must be 0-6, actual value was {dayOfWeek}");
+                throw new ArgumentOutOfRangeException(nameof(dayOfWeek), $"Must be 0-6, actual value was {dayOfWeek}");
 
             return DaysOfWeek[dayOfWeek];
         }
 
-        public static int ToIndex(Weekday day)
+        public static int ToIndex(this Weekday day)
         {
             switch (day)
             {
@@ -72,16 +65,19 @@ namespace JeanMeeus
                     return 6;
 
                 default:
-                    throw new ArgumentOutOfRangeException($"day not set to valid day of week: actual value is {day}");
+                    throw new ArgumentOutOfRangeException(nameof(day), $"Not a valid day of week: actual value is {day}");
             }
         }
 
-        public static Weekday Add(Weekday day, int value)
+        public static Weekday Add(this Weekday day, int value)
         {
-            int a = (ToIndex(day) + value) % 7;
+            int a = (day.ToIndex() + value) % 7;
             if (a < 0) a = 7 + a;
             return FromIndex(a);
         }
+
+        public static bool IsWeekday(this Weekday day) => (day & Weekday.Weekday) != 0;
+        public static bool IsWeekend(this Weekday day) => (day & Weekday.Weekend) != 0;
     }
 
     public static class Month
