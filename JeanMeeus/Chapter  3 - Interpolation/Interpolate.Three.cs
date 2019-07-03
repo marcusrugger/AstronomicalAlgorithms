@@ -17,23 +17,13 @@ namespace JeanMeeus
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.3
-        public double FindY(double n)
-        {
-            double y = y2 + (n / 2) * (a + b + n * c);
-            return y;
-        }
+        public double FindY(double n) => y2 + (n / 2) * (a + b + n * c);
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.4
-        public double ExtremumY
-        {
-            get { return y2 - (a + b) * (a + b) / (8 * c); }
-        }
+        public double ExtremumY => y2 - (a + b) * (a + b) / (8 * c);
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 25, Formula 3.5
-        public double ExtremumN
-        {
-            get { return -((a + b) / (2 * c)); }
-        }
+        public double ExtremumN => -((a + b) / (2 * c));
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 26, Formula 3.6
         public double Ybecomes0(double precision)
@@ -49,10 +39,7 @@ namespace JeanMeeus
 
             return n0;
 
-            double f(double n)
-            {
-                return (-(2 * y2)) / (a + b + c * n);
-            }
+            double f(double n) => (-(2 * y2)) / (a + b + c * n);
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 27, Formula 3.7
@@ -70,10 +57,7 @@ namespace JeanMeeus
 
             return n0;
 
-            double f(double n)
-            {
-                return -((2 * y2 + n * (a + b + c * n)) / (a + b + 2 * c * n));
-            }
+            double f(double n) => -((2 * y2 + n * (a + b + c * n)) / (a + b + 2 * c * n));
         }
     }
 }

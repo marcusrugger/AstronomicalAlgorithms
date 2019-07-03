@@ -24,15 +24,10 @@ namespace JeanMeeus
         }
 
         // Astronomical Algorithms by Jean Meeus, Chapter 3, page 28, Formula 3.8
-        public double FindY(double n)
-        {
-            double y = y3
-                     + (n / 2) * (b + c)
-                     + (n * n / 2) * f
-                     + ((n * (n * n - 1)) / 12) * (h + j)
-                     + ((n * n * (n * n - 1)) / 24) * k;
-
-            return y;
-        }
+        public double FindY(double n) => y3
+                                       + (n / 2) * (b + c)
+                                       + (n * n / 2) * f
+                                       + ((n * (n * n - 1)) / 12) * (h + j)
+                                       + ((n * n * (n * n - 1)) / 24) * k;
     }
 }
