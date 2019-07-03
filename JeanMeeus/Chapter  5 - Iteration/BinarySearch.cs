@@ -9,10 +9,7 @@ namespace JeanMeeus
         private readonly double precision;
 
         public static Func<Func<double, double>, double> Create(double x1, double x2, double precision)
-        {
-            var obj = new BinarySearch(x1, x2, precision);
-            return obj.Iterate;
-        }
+            => new BinarySearch(x1, x2, precision).Iterate;
 
         private BinarySearch(double x1, double x2, double precision)
         {
